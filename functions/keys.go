@@ -4,18 +4,7 @@ package functions
 //
 // Due to Go's randomization of iterating maps the order is not deterministic.
 func (m MapType) Keys() KeySliceType {
+	_ = "STUB: not implemented"
 	// Avoid allocation
-	l := len(m)
-	if l == 0 {
-		return nil
-	}
-
-	i := 0
-	keys := make(KeySliceType, len(m))
-	for key := range m {
-		keys[i] = key
-		i++
-	}
-
-	return keys
+	return *new(KeySliceType)
 }

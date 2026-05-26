@@ -1,6 +1,4 @@
 package functions
 
 // Last returns the last element, or zero. Also see LastOr().
-func (ss SliceType) Last() ElementType {
-	return ss.LastOr(ElementZeroValue)
-}
+func (ss SliceType) Last() ElementType { _ = "STUB: not implemented"; return *new(ElementType) }

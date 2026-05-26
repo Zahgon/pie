@@ -4,12 +4,4 @@ package pie
 // as the any() function in Python.
 //
 // If the list is empty then false is always returned.
-func Any[T any](ss []T, fn func(value T) bool) bool {
-	for _, value := range ss {
-		if fn(value) {
-			return true
-		}
-	}
-
-	return false
-}
+func Any[T any](ss []T, fn func(value T) bool) bool { _ = "STUB: not implemented"; return false }

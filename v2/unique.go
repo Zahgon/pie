@@ -11,17 +11,8 @@ package pie
 //
 // See AreUnique().
 func Unique[T comparable](ss []T) []T {
+	_ = "STUB: not implemented"
 	// Avoid the allocation. If there is one element or less it is already
 	// unique.
-	if len(ss) < 2 {
-		return ss
-	}
-
-	values := map[T]struct{}{}
-
-	for _, value := range ss {
-		values[value] = struct{}{}
-	}
-
-	return Keys(values)
+	return nil
 }

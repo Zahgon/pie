@@ -1,7 +1,6 @@
 package pie
 
 import (
-	"encoding/json"
 	"golang.org/x/exp/constraints"
 )
 
@@ -11,12 +10,8 @@ import (
 // slice to ensure that the JSON value return is always an array. See
 // json.MarshalIndent for details.
 func JSONStringIndent[T constraints.Ordered](ss []T, prefix, indent string) string {
-	if ss == nil {
-		return "[]"
-	}
-
-	// An error should not be possible.
-	data, _ := json.MarshalIndent(ss, prefix, indent)
-
-	return string(data)
+	_ = "STUB: not implemented"
+	return ""
 }
+
+// An error should not be possible.

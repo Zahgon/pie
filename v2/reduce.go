@@ -7,15 +7,4 @@ package pie
 // panic if the reducer is nil and the slice has more than one element (required
 // to invoke reduce). Otherwise returns result of applying reducer from left to
 // right.
-func Reduce[T any](ss []T, reducer func(T, T) T) (el T) {
-	if len(ss) == 0 {
-		return
-	}
-
-	el = ss[0]
-	for _, s := range ss[1:] {
-		el = reducer(el, s)
-	}
-
-	return
-}
+func Reduce[T any](ss []T, reducer func(T, T) T) (el T) { _ = "STUB: not implemented"; return *new(T) }

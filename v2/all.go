@@ -4,12 +4,4 @@ package pie
 // as the all() function in Python.
 //
 // If the list is empty then true is always returned.
-func All[T any](ss []T, fn func(value T) bool) bool {
-	for _, value := range ss {
-		if !fn(value) {
-			return false
-		}
-	}
-
-	return true
-}
+func All[T any](ss []T, fn func(value T) bool) bool { _ = "STUB: not implemented"; return false }

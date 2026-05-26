@@ -9,34 +9,8 @@ package functions
 // The added and removed returned may be blank respectively, or contain upto as
 // many elements that exists in the largest slice.
 func (ss SliceType) Diff(against SliceType) (added, removed SliceType) {
+	_ = "STUB: not implemented"
 	// This is probably not the best way to do it. We do an O(n^2) between the
 	// slices to see which items are missing in each direction.
-
-	diffOneWay := func(ss1, ss2raw SliceType) (result SliceType) {
-		ss2 := make(SliceType, len(ss2raw))
-		copy(ss2, ss2raw)
-
-		for _, s := range ss1 {
-			found := false
-
-			for i, element := range ss2 {
-				if s.Equals(element) {
-					ss2 = append(ss2[:i], ss2[i+1:]...)
-					found = true
-					break
-				}
-			}
-
-			if !found {
-				result = append(result, s)
-			}
-		}
-
-		return
-	}
-
-	removed = diffOneWay(ss, against)
-	added = diffOneWay(against, ss)
-
-	return
+	return *new(SliceType), *new(SliceType)
 }

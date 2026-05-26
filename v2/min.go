@@ -5,17 +5,4 @@ import (
 )
 
 // Min is the minimum value, or zero.
-func Min[T constraints.Ordered](ss []T) (min T) {
-	if len(ss) == 0 {
-		return
-	}
-
-	min = ss[0]
-	for _, s := range ss {
-		if s < min {
-			min = s
-		}
-	}
-
-	return
-}
+func Min[T constraints.Ordered](ss []T) (min T) { _ = "STUB: not implemented"; return *new(T) }

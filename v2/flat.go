@@ -7,10 +7,4 @@ package pie
 //
 //	Flat([[100], [101, 102], [102, 103]])   => [100, 101, 102, 102, 103]
 //	Flat([nil, [101, 102], []])             => [101, 102]
-func Flat[T any](ss [][]T) (ss2 []T) {
-	for _, s := range ss {
-		ss2 = append(ss2, s...)
-	}
-
-	return ss2
-}
+func Flat[T any](ss [][]T) (ss2 []T) { _ = "STUB: not implemented"; return nil }

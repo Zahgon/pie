@@ -4,18 +4,7 @@ package pie
 //
 // Due to Go's randomization of iterating maps the order is not deterministic.
 func Keys[K comparable, V any](m map[K]V) []K {
+	_ = "STUB: not implemented"
 	// Avoid allocation
-	l := len(m)
-	if l == 0 {
-		return nil
-	}
-
-	i := 0
-	keys := make([]K, len(m))
-	for key := range m {
-		keys[i] = key
-		i++
-	}
-
-	return keys
+	return nil
 }

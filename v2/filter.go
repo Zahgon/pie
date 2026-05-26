@@ -4,12 +4,4 @@ package pie
 // true from the condition. The returned slice may contain zero elements (nil).
 //
 // FilterNot works in the opposite way of Filter.
-func Filter[T any](ss []T, condition func(T) bool) (ss2 []T) {
-	for _, s := range ss {
-		if condition(s) {
-			ss2 = append(ss2, s)
-		}
-	}
-
-	return
-}
+func Filter[T any](ss []T, condition func(T) bool) (ss2 []T) { _ = "STUB: not implemented"; return nil }

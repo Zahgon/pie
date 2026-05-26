@@ -4,38 +4,16 @@ package pie
 //
 // Due to Go's randomization of iterating maps the order is not deterministic.
 func (m currencies) Keys() []string {
+	_ = "STUB: not implemented"
 	// Avoid allocation
-	l := len(m)
-	if l == 0 {
-		return nil
-	}
-
-	i := 0
-	keys := make([]string, len(m))
-	for key := range m {
-		keys[i] = key
-		i++
-	}
-
-	return keys
+	return nil
 }
 
 // Values returns the values in the map.
 //
 // Due to Go's randomization of iterating maps the order is not deterministic.
 func (m currencies) Values() []currency {
+	_ = "STUB: not implemented"
 	// Avoid allocation
-	l := len(m)
-	if l == 0 {
-		return nil
-	}
-
-	i := 0
-	keys := make([]currency, len(m))
-	for _, value := range m {
-		keys[i] = value
-		i++
-	}
-
-	return keys
+	return nil
 }

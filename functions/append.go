@@ -4,10 +4,8 @@ package functions
 //
 // It is acceptable to provide zero arguments.
 func (ss SliceType) Append(elements ...ElementType) SliceType {
+	_ = "STUB: not implemented"
 	// Copy ss, to make sure no memory is overlapping between input and
 	// output. See issue #97.
-	result := append(SliceType{}, ss...)
-
-	result = append(result, elements...)
-	return result
+	return *new(SliceType)
 }

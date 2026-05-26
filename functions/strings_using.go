@@ -6,17 +6,8 @@ import (
 
 // StringsUsing transforms each element to a string.
 func (ss SliceType) StringsUsing(transform func(ElementType) string) pie.Strings {
-	l := len(ss)
+	_ = "STUB: not implemented"
 
 	// Avoid the allocation.
-	if l == 0 {
-		return nil
-	}
-
-	result := make(pie.Strings, l)
-	for i := 0; i < l; i++ {
-		result[i] = transform(ss[i])
-	}
-
-	return result
+	return *new(pie.Strings)
 }

@@ -11,22 +11,8 @@ package functions
 //
 // See AreUnique().
 func (ss SliceType) Unique() SliceType {
+	_ = "STUB: not implemented"
 	// Avoid the allocation. If there is one element or less it is already
 	// unique.
-	if len(ss) < 2 {
-		return ss
-	}
-
-	values := map[ElementType]struct{}{}
-
-	for _, value := range ss {
-		values[value] = struct{}{}
-	}
-
-	var uniqueValues SliceType
-	for value := range values {
-		uniqueValues = append(uniqueValues, value)
-	}
-
-	return uniqueValues
+	return *new(SliceType)
 }

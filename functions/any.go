@@ -5,11 +5,6 @@ package functions
 //
 // If the list is empty then false is always returned.
 func (ss SliceType) Any(fn func(value ElementType) bool) bool {
-	for _, value := range ss {
-		if fn(value) {
-			return true
-		}
-	}
-
+	_ = "STUB: not implemented"
 	return false
 }

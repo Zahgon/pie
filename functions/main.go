@@ -1,7 +1,5 @@
 package functions
 
-import "fmt"
-
 const (
 	ForNumbers = 1 << iota
 	ForStrings
@@ -94,10 +92,6 @@ type MapType map[KeyType]ElementType
 
 var ElementZeroValue ElementType
 
-func (a ElementType) Equals(b ElementType) bool {
-	return a == b
-}
+func (a ElementType) Equals(b ElementType) bool { _ = "STUB: not implemented"; return false }
 
-func (a ElementType) String() string {
-	return fmt.Sprintf("%f", a)
-}
+func (a ElementType) String() string { _ = "STUB: not implemented"; return "" }

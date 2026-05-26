@@ -2,7 +2,6 @@ package pie
 
 import (
 	"golang.org/x/exp/constraints"
-	"sort"
 )
 
 // Sort works similar to sort.SliceType(). However, unlike sort.SliceType the
@@ -10,17 +9,8 @@ import (
 //
 // See Reverse() and AreSorted().
 func Sort[T constraints.Ordered](ss []T) []T {
+	_ = "STUB: not implemented"
 	// Avoid the allocation. If there is one element or less it is already
 	// sorted.
-	if len(ss) < 2 {
-		return ss
-	}
-
-	sorted := make([]T, len(ss))
-	copy(sorted, ss)
-	sort.Slice(sorted, func(i, j int) bool {
-		return sorted[i] < sorted[j]
-	})
-
-	return sorted
+	return nil
 }

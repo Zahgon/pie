@@ -10,149 +10,37 @@ import (
 	"io/ioutil"
 	"os"
 	"regexp"
-	"sort"
 	"strings"
 
 	"github.com/elliotchance/pie/functions"
 )
 
-func check(err error) {
-	if err != nil {
-		panic(err)
-	}
-}
+func check(err error) { _ = "STUB: not implemented"; return }
 
-func getIdentName(e ast.Expr) string {
-	switch v := e.(type) {
-	case *ast.Ident:
-		return v.Name
-
-	case *ast.StarExpr:
-		return "*" + getIdentName(v.X)
-
-	default:
-		panic(fmt.Sprintf("cannot decode %T", e))
-	}
-}
+func getIdentName(e ast.Expr) string { _ = "STUB: not implemented"; return "" }
 
 func getKeyAndElementType(pkg *ast.Package, name string, typeSpec *ast.TypeSpec) (string, string, string, *TypeExplorer) {
-	pkgName := pkg.Name
-
-	if t, ok := typeSpec.Type.(*ast.ArrayType); ok {
-		explorer := NewTypeExplorer(pkg, getIdentName(t.Elt))
-
-		switch v := t.Elt.(type) {
-		case *ast.Ident:
-			if v == nil || v.Obj == nil {
-				break
-			}
-
-			if ts, ok := v.Obj.Decl.(*ast.TypeSpec); ok {
-				if _, ok := ts.Type.(*ast.InterfaceType); ok {
-					explorer.IsInterface = true
-				}
-			}
-
-		}
-
-		return pkgName, "", getIdentName(t.Elt), explorer
-	}
-
-	if t, ok := typeSpec.Type.(*ast.MapType); ok {
-		explorer := NewTypeExplorer(pkg, getIdentName(t.Value))
-
-		return pkgName, getIdentName(t.Key), getIdentName(t.Value), explorer
-	}
-
-	panic(fmt.Sprintf("type %s must be a slice or map", name))
+	_ = "STUB: not implemented"
+	return "", "", "", nil
 }
 
 func findType(pkgs map[string]*ast.Package, name string) (packageName, keyType, elementType string, explorer *TypeExplorer) {
-	for _, pkg := range pkgs {
-		for _, file := range pkg.Files {
-			for _, decl := range file.Decls {
-				if genDecl, ok := decl.(*ast.GenDecl); ok {
-					for _, spec := range genDecl.Specs {
-						if typeSpec, ok := spec.(*ast.TypeSpec); ok {
-							if typeSpec.Name.String() == name {
-								return getKeyAndElementType(pkg, name, typeSpec)
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
-	panic(fmt.Sprintf("type %s does not exist", name))
+	_ = "STUB: not implemented"
+	return "", "", "", nil
 }
 
-func getType(keyType, elementType string) int {
-	if keyType != "" {
-		return functions.ForMaps
-	}
+func getType(keyType, elementType string) int { _ = "STUB: not implemented"; return 0 }
 
-	switch elementType {
-	case "int8", "uint8", "byte", "int16", "uint16", "int32", "rune", "uint32",
-		"int64", "uint64", "int", "uint", "uintptr", "float32", "float64",
-		"complex64", "complex128":
-		return functions.ForNumbers
-
-	case "string":
-		return functions.ForStrings
-	}
-
-	return functions.ForStructs
-}
-
-func getImports(packageName, s string) (imports []string) {
-	fset := token.NewFileSet()
-	f, err := parser.ParseFile(fset, "", s, parser.ImportsOnly)
-	if err != nil {
-		panic(err)
-	}
-
-	for _, s := range f.Imports {
-		importName := s.Path.Value
-
-		if importName == `"github.com/elliotchance/pie/pie"` &&
-			isSelfPackage(packageName) {
-			continue
-		}
-
-		imports = append(imports, importName)
-	}
-
-	return
-}
+func getImports(packageName, s string) (imports []string) { _ = "STUB: not implemented"; return nil }
 
 func getAllImports(packageName string, files []string, explorer *TypeExplorer) (imports []string) {
-	mapImports := map[string]struct{}{}
-
-	for _, file := range files {
-		if !explorer.HasString() && strings.Contains(file, "mightBeString") {
-			mapImports[`"fmt"`] = struct{}{}
-		}
-
-		for _, imp := range getImports(packageName, file) {
-			mapImports[imp] = struct{}{}
-		}
-	}
-
-	for imp := range mapImports {
-		imports = append(imports, imp)
-	}
-
-	sort.Strings(imports)
-
-	return
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // We have to generate imports slightly differently when we are building code
 // that will go into its own packages vs an external package.
-func isSelfPackage(packageName string) bool {
-	return packageName == "pie"
-}
+func isSelfPackage(packageName string) bool { _ = "STUB: not implemented"; return false }
 
 func main() {
 	fset := token.NewFileSet()
@@ -246,54 +134,21 @@ func main() {
 }
 
 func getFunctionsFromArg(arg string) (mapOrSliceType string, fns []string) {
-	parts := strings.Split(arg, ".")
-
-	if len(parts) < 2 {
-		panic("must specify at least one function or *: " + arg)
-	}
-
-	return parts[0], parts[1:]
+	_ = "STUB: not implemented"
+	return "", nil
 }
 
 func stringSliceContains(haystack []string, needle string) bool {
-	if haystack == nil {
-		return false
-	}
-
-	for _, w := range haystack {
-		if w == needle {
-			return true
-		}
-	}
+	_ = "STUB: not implemented"
 	return false
 }
 
 // http://elliot.land/post/go-replace-string-with-regular-expression-callback
 func ReplaceAllStringSubmatchFunc(re *regexp.Regexp, str string, repl func([]string) string) string {
-	result := ""
-	lastIndex := 0
-
-	for _, v := range re.FindAllSubmatchIndex([]byte(str), -1) {
-		groups := []string{}
-		for i := 0; i < len(v); i += 2 {
-			groups = append(groups, str[v[i]:v[i+1]])
-		}
-
-		if isNegative(str[v[0]-1]) {
-			result += str[lastIndex:v[0]] + addBrackets(repl(groups))
-		} else {
-			result += str[lastIndex:v[0]] + repl(groups)
-		}
-		lastIndex = v[1]
-	}
-
-	return result + str[lastIndex:]
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func isNegative(b byte) bool {
-	return b == '!'
-}
+func isNegative(b byte) bool { _ = "STUB: not implemented"; return false }
 
-func addBrackets(str string) string {
-	return `(` + str + `)`
-}
+func addBrackets(str string) string { _ = "STUB: not implemented"; return "" }

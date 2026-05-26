@@ -5,11 +5,6 @@ package functions
 //
 // If the list is empty then -1 is always returned.
 func (ss SliceType) FindFirstUsing(fn func(value ElementType) bool) int {
-	for idx, value := range ss {
-		if fn(value) {
-			return idx
-		}
-	}
-
-	return -1
+	_ = "STUB: not implemented"
+	return 0
 }

@@ -3,9 +3,9 @@ package functions
 // Sequence generates all numbers in range or returns nil if params invalid
 //
 // There are 3 variations to generate:
-// 		1. [0, n).
-//		2. [min, max).
-//		3. [min, max) with step.
+//  1. [0, n).
+//  2. [min, max).
+//  3. [min, max) with step.
 //
 // if len(params) == 1 considered that will be returned slice between 0 and n,
 // where n is the first param, [0, n).
@@ -15,9 +15,6 @@ package functions
 // where min is the first param, max is the second, step is the third one, [min, max) with step,
 // others params will be ignored
 func (ss SliceType) Sequence(params ...int) SliceType {
-	var creator = func(i int) ElementType {
-		return ElementType(i)
-	}
-
-	return ss.SequenceUsing(creator, params...)
+	_ = "STUB: not implemented"
+	return *new(SliceType)
 }

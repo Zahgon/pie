@@ -19,12 +19,6 @@ package pie
 //
 // In above case map {1:[76, 11], 2:[37, 47], 3:[23, 23]} is returned.
 func GroupBy[T comparable, U any](values []U, getKey func(U) T) map[T][]U {
-	groups := make(map[T][]U)
-
-	for _, val := range values {
-		key := getKey(val)
-		groups[key] = append(groups[key], val)
-	}
-
-	return groups
+	_ = "STUB: not implemented"
+	return nil
 }

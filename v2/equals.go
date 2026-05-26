@@ -8,16 +8,4 @@ package pie
 //
 // if element realizes Equals interface it uses that method, in other way uses
 // default compare
-func Equals[T comparable](ss []T, rhs []T) bool {
-	if len(ss) != len(rhs) {
-		return false
-	}
-
-	for i := range ss {
-		if ss[i] != rhs[i] {
-			return false
-		}
-	}
-
-	return true
-}
+func Equals[T comparable](ss []T, rhs []T) bool { _ = "STUB: not implemented"; return false }

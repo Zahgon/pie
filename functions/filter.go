@@ -5,10 +5,6 @@ package functions
 //
 // FilterNot works in the opposite way of Filter.
 func (ss SliceType) Filter(condition func(ElementType) bool) (ss2 SliceType) {
-	for _, s := range ss {
-		if condition(s) {
-			ss2 = append(ss2, s)
-		}
-	}
-	return
+	_ = "STUB: not implemented"
+	return *new(SliceType)
 }

@@ -9,21 +9,10 @@ import (
 // If the element type implements fmt.Stringer it will be used. Otherwise it
 // will fallback to the result of:
 //
-//   fmt.Sprintf("%v")
-//
+//	fmt.Sprintf("%v")
 func (ss SliceType) Strings() pie.Strings {
-	l := len(ss)
+	_ = "STUB: not implemented"
 
 	// Avoid the allocation.
-	if l == 0 {
-		return nil
-	}
-
-	result := make(pie.Strings, l)
-	for i := 0; i < l; i++ {
-		mightBeString := ss[i]
-		result[i] = mightBeString.String()
-	}
-
-	return result
+	return *new(pie.Strings)
 }

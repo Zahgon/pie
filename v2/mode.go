@@ -4,29 +4,4 @@ package pie
 //
 // The number of items returned may be the same as the input or less. It will
 // never return zero items unless the input slice has zero items.
-func Mode[T comparable](ss []T) []T {
-	if len(ss) == 0 {
-		return nil
-	}
-
-	values := make(map[T]int)
-	for _, s := range ss {
-		values[s]++
-	}
-
-	var maxFrequency int
-	for _, v := range values {
-		if v > maxFrequency {
-			maxFrequency = v
-		}
-	}
-
-	var maxValues []T
-	for k, v := range values {
-		if v == maxFrequency {
-			maxValues = append(maxValues, k)
-		}
-	}
-
-	return maxValues
-}
+func Mode[T comparable](ss []T) []T { _ = "STUB: not implemented"; return nil }
